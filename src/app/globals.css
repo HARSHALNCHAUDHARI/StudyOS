@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Apple Pro Space Dark Canvas */
+  --bg-space: #07090e;
+  --bg-space-card: rgba(255, 255, 255, 0.07);
+  --bg-space-card-hover: rgba(255, 255, 255, 0.12);
+  --border-glass: rgba(255, 255, 255, 0.18);
+  --border-glass-bright: rgba(255, 255, 255, 0.32);
+  
+  /* Apple Human Interface Palette */
+  --apple-blue: #0a84ff;
+  --apple-indigo: #5e5ce6;
+  --apple-purple: #bf5af2;
+  --apple-pink: #ff375f;
+  --apple-red: #ff453a;
+  --apple-orange: #ff9f0a;
+  --apple-yellow: #ffd60a;
+  --apple-green: #30d158;
+  --apple-mint: #63e6e2;
+  --apple-teal: #40c8e0;
+  --apple-cyan: #64d2ff;
+
+  /* Typography */
+  --text-white: #ffffff;
+  --text-silver: #e2e8f0;
+  --text-muted: #94a3b8;
+}
+
+body {
+  background-color: #07090e;
+  color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   AUTHENTIC APPLE LIQUID GLASS (macOS / visionOS / iOS 18 SPEC)
+   Engineered for maximum contrast, luminous frosted translucency & visibility
+   ========================================================================== */
+
+/* High-Visibility Apple Frosted Glass Panel */
+.apple-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.035) 100%);
+  backdrop-filter: blur(36px) saturate(190%);
+  -webkit-backdrop-filter: blur(36px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 16px 40px -10px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Elevated Apple Hero / Modal Card */
+.apple-glass-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(48px) saturate(210%);
+  -webkit-backdrop-filter: blur(48px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Highly Visible Frosted Card (Never blends in; always pops with specular sheen) */
+.apple-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 10px 30px -8px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 
+    0 20px 45px -10px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(10, 132, 255, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.42);
+  transform: translateY(-2px);
+}
+
+/* Secondary frosted surface for nested cards inside glass */
+.apple-subcard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease;
+}
+
+.apple-subcard:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Apple Segmented Control Pill Container (macOS / visionOS tab bar) */
+.apple-segmented-tabs {
+  background: rgba(10, 14, 24, 0.7);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px;
+  border-radius: 9999px;
+  box-shadow: 
+    0 8px 24px -6px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.apple-tab-item {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.apple-tab-item-active {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.14) 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Apple Glass Pill Badge */
+.apple-glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Apple Glass Input */
+.apple-input {
+  background: rgba(12, 16, 26, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+}
+
+.apple-input:focus {
+  background: rgba(16, 22, 36, 0.9);
+  border-color: var(--apple-blue);
+  box-shadow: 
+    0 0 0 3px rgba(10, 132, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+/* Apple Primary Button */
+.apple-btn-primary {
+  background: linear-gradient(180deg, #1f8bff 0%, #0071e3 100%);
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 18px rgba(10, 132, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-btn-primary:hover {
+  background: linear-gradient(180deg, #389dff 0%, #0a84ff 100%);
+  box-shadow: 
+    0 6px 24px rgba(10, 132, 255, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Apple Secondary Button */
+.apple-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Apple Status Badge */
+.apple-badge {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* Backward compatibility aliases */
+.glass-panel { @apply apple-glass; }
+.glass-panel-elevated { @apply apple-glass-elevated; }
+.glass-card { @apply apple-card; }
+.glass-input { @apply apple-input; }
+
+/* Apple-style Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.38);
+}
