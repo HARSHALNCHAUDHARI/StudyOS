@@ -194,16 +194,21 @@ npm start
 
 ## ☁️ Deployment Guide
 
-### Deploying to Vercel
-1. Push repository to GitHub.
-2. In Vercel, import the repository with Framework Preset: `Next.js`.
-3. Add environment variables:
-   - `OPENAI_API_KEY`
-   - `OPENAI_MODEL`
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-4. Deploy!
+### Deploying to Vercel (1-Click Deployment)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHARSHALNCHAUDHARI%2FStudyOS)
+
+**Direct Deployment Link:**
+👉 [https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHARSHALNCHAUDHARI%2FStudyOS](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHARSHALNCHAUDHARI%2FStudyOS)
+
+1. Click the **Deploy with Vercel** link above or import `HARSHALNCHAUDHARI/StudyOS` in your Vercel Dashboard.
+2. Vercel automatically detects the Framework Preset as **Next.js**.
+3. (Optional) In **Environment Variables**, add:
+   - `OPENAI_API_KEY`: Your OpenAI API key (for live AI generation; app includes full built-in offline engine if omitted)
+   - `OPENAI_MODEL`: `gpt-4o-mini`
+   - `NEXT_PUBLIC_SUPABASE_URL` (optional)
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` (optional)
+4. Click **Deploy**. Vercel will build and assign your live production URL (e.g. `https://study-os.vercel.app`).
 
 ### Deploying Database to Supabase
 1. Create a new Supabase project.
