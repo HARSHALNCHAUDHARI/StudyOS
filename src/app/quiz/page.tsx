@@ -255,11 +255,11 @@ export default function QuizArenaPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 w-full md:w-auto">
                 {quizResult.attempt.passed ? (
                   <Link
                     href="/"
-                    className="apple-btn-primary flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold cursor-pointer shadow-lg"
+                    className="apple-btn-primary flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold cursor-pointer shadow-lg w-full md:w-auto"
                   >
                     <span>Return to Dashboard</span>
                     <ArrowRight className="w-4 h-4" />
@@ -268,7 +268,7 @@ export default function QuizArenaPage() {
                   <button
                     onClick={handleGenerateRetryQuiz}
                     disabled={isRetrying}
-                    className="apple-btn-primary flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold cursor-pointer shadow-lg"
+                    className="apple-btn-primary flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold cursor-pointer shadow-lg w-full md:w-auto"
                   >
                     <RotateCcw className={`w-4 h-4 ${isRetrying ? 'animate-spin' : ''}`} />
                     <span>{isRetrying ? 'Generating Retry...' : 'Take Targeted Retry Quiz'}</span>

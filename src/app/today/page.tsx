@@ -135,15 +135,15 @@ export default function TodayStudyPage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Top Header Card */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <span className="apple-glass-pill text-xs font-mono font-bold text-blue-200 px-3 py-1 rounded-full border border-blue-400/30">
               Day {studyDay.dayNumber} of 150
             </span>
             <span className="text-xs text-slate-300 font-mono">120 Minutes Allocated</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">
             {studyDay.topicTitle}
           </h1>
           <p className="text-xs text-slate-200 mt-1">
@@ -152,17 +152,19 @@ export default function TodayStudyPage() {
         </div>
 
         {/* Study Timer Controls in Apple Frosted Pill */}
-        <div className="apple-glass-pill flex items-center gap-3 p-2.5 rounded-full border border-white/20 shadow-md">
-          <Clock className="w-5 h-5 text-blue-400 ml-1.5" />
-          <div className="text-left font-mono">
-            <div className="text-lg font-bold text-white leading-none">
-              {formatTimer(elapsedSeconds)}
+        <div className="apple-glass-pill flex items-center justify-between sm:justify-start gap-3 p-2 sm:p-2.5 rounded-full border border-white/20 shadow-md self-start md:self-auto w-full sm:w-auto">
+          <div className="flex items-center gap-2.5">
+            <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 ml-1.5" />
+            <div className="text-left font-mono">
+              <div className="text-base sm:text-lg font-bold text-white leading-none">
+                {formatTimer(elapsedSeconds)}
+              </div>
+              <div className="text-[10px] text-slate-300 leading-none mt-1 font-medium">Session Active</div>
             </div>
-            <div className="text-[10px] text-slate-300 leading-none mt-1 font-medium">Session Active</div>
           </div>
           <button
             onClick={() => setTimerRunning(!timerRunning)}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition ml-2 cursor-pointer ${
+            className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold transition cursor-pointer ${
               timerRunning
                 ? 'bg-amber-500/20 text-amber-200 border border-amber-400/40 shadow-sm'
                 : 'apple-btn-primary'
@@ -174,13 +176,13 @@ export default function TodayStudyPage() {
       </div>
 
       {/* Completion Gate Status Ribbon */}
-      <div className="p-5 rounded-[26px] apple-glass border border-white/18 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-[0_12px_32px_rgba(0,0,0,0.4)]">
-        <div className="flex items-center gap-3.5">
-          <div className="p-2.5 rounded-2xl apple-subcard text-blue-400">
+      <div className="p-4 sm:p-5 rounded-[22px] sm:rounded-[26px] apple-glass border border-white/18 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-[0_12px_32px_rgba(0,0,0,0.4)]">
+        <div className="flex items-start sm:items-center gap-3 sm:gap-3.5">
+          <div className="p-2 sm:p-2.5 rounded-2xl apple-subcard text-blue-400 shrink-0 mt-0.5 sm:mt-0">
             {gate.canUnlockQuiz ? <Unlock className="w-5 h-5 text-emerald-400" /> : <Lock className="w-5 h-5 text-amber-400" />}
           </div>
           <div>
-            <div className="text-xs font-bold text-white flex items-center gap-2">
+            <div className="text-xs font-bold text-white flex flex-wrap items-center gap-2">
               <span>Mandatory Daily Gate Status:</span>
               <span className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase font-mono font-bold ${
                 studyDay.status === 'completed'
@@ -190,7 +192,7 @@ export default function TodayStudyPage() {
                 {studyDay.status.replace('_', ' ')}
               </span>
             </div>
-            <p className="text-[11px] text-slate-200 mt-0.5 font-medium">
+            <p className="text-[11px] text-slate-200 mt-1 font-medium leading-relaxed">
               {gate.canUnlockQuiz
                 ? 'Both theory and practical tasks verified. Assessment is UNLOCKED!'
                 : 'Complete Theory and Practical tasks to unlock the Daily AI Quiz.'}
@@ -201,13 +203,13 @@ export default function TodayStudyPage() {
         {gate.canUnlockQuiz ? (
           <Link
             href="/quiz"
-            className="apple-btn-primary flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold cursor-pointer shadow-lg"
+            className="apple-btn-primary flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold cursor-pointer shadow-lg w-full md:w-auto"
           >
             <BrainCircuit className="w-4 h-4" />
             <span>Enter AI Quiz Arena →</span>
           </Link>
         ) : (
-          <div className="apple-glass-pill px-3.5 py-1.5 rounded-full text-xs text-slate-300 flex items-center gap-1.5 font-mono">
+          <div className="apple-glass-pill px-3.5 py-1.5 rounded-full text-xs text-slate-300 flex items-center justify-center sm:justify-start gap-1.5 font-mono w-full md:w-auto">
             <Lock className="w-3.5 h-3.5 text-amber-400" />
             <span>Quiz locked (Pass practical first)</span>
           </div>
@@ -252,7 +254,7 @@ export default function TodayStudyPage() {
       {/* TAB 1: THEORY TASK */}
       {activeTab === 'theory' && theoryTask && (
         <div className="space-y-6">
-          <div className="apple-glass p-7 md:p-8 rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[24px] sm:rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-1">
                 <span className="text-xs font-mono text-blue-300 font-bold uppercase tracking-wider">Structured Theory Material</span>
@@ -274,7 +276,7 @@ export default function TodayStudyPage() {
             </div>
 
             {/* Learning Objectives */}
-            <div className="apple-subcard p-5 rounded-2xl border border-white/14">
+            <div className="apple-subcard p-4 sm:p-5 rounded-2xl border border-white/14">
               <h3 className="text-xs font-bold text-blue-300 uppercase tracking-wider mb-2 font-mono">
                 Key Learning Objectives
               </h3>
@@ -289,7 +291,7 @@ export default function TodayStudyPage() {
             </div>
 
             {/* Formatted Notes Content */}
-            <div className="apple-subcard p-6 md:p-8 rounded-[24px] border border-white/14 shadow-inner">
+            <div className="apple-subcard p-5 sm:p-7 md:p-8 rounded-[24px] border border-white/14 shadow-inner">
               <CoachMessageRenderer content={theoryTask.content.notes || ''} />
             </div>
 
@@ -309,7 +311,7 @@ export default function TodayStudyPage() {
             )}
 
             {/* Self Check Verification Gate */}
-            <div className="apple-subcard p-5 rounded-2xl bg-blue-500/12 border border-blue-400/30 space-y-3">
+            <div className="apple-subcard p-4 sm:p-5 rounded-2xl bg-blue-500/12 border border-blue-400/30 space-y-3">
               <h3 className="text-xs font-bold text-white flex items-center gap-2">
                 <HelpCircle className="w-4 h-4 text-blue-400" />
                 <span>Theory Self-Check Verification</span>
@@ -317,12 +319,12 @@ export default function TodayStudyPage() {
               <p className="text-xs text-slate-200 leading-relaxed">
                 Confirm you have digested the core definitions, architectural concepts, and principles of {studyDay.topicTitle} before advancing to the hands-on lab.
               </p>
-              <label className="flex items-center gap-2.5 text-xs text-slate-100 cursor-pointer pt-2">
+              <label className="flex items-start sm:items-center gap-2.5 text-xs text-slate-100 cursor-pointer pt-2">
                 <input
                   type="checkbox"
                   checked={selfCheckPassed}
                   onChange={(e) => setSelfCheckPassed(e.target.checked)}
-                  className="w-4 h-4 rounded text-blue-500 focus:ring-0 bg-slate-900 border-white/30"
+                  className="w-4 h-4 rounded text-blue-500 focus:ring-0 bg-slate-900 border-white/30 shrink-0 mt-0.5 sm:mt-0"
                 />
                 <span className="font-medium">I have thoroughly studied these theory notes and am ready for the hands-on practical lab.</span>
               </label>
@@ -331,7 +333,7 @@ export default function TodayStudyPage() {
                 <button
                   onClick={handleCompleteTheory}
                   disabled={!selfCheckPassed || studyDay.theoryStatus === 'completed'}
-                  className={`px-5 py-2.5 rounded-full font-bold text-xs transition cursor-pointer shadow-md ${
+                  className={`w-full sm:w-auto px-5 py-2.5 rounded-full font-bold text-xs transition cursor-pointer shadow-md ${
                     studyDay.theoryStatus === 'completed'
                       ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/40'
                       : selfCheckPassed
@@ -350,7 +352,7 @@ export default function TodayStudyPage() {
       {/* TAB 2: PRACTICAL LAB */}
       {activeTab === 'practical' && practicalTask && (
         <div className="space-y-6">
-          <div className="apple-glass p-7 md:p-8 rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[24px] sm:rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div>
               <span className="text-xs font-mono text-emerald-300 font-bold uppercase tracking-wider">Hands-On Practical Lab</span>
               <h2 className="text-xl md:text-2xl font-bold text-white mt-1">{practicalTask.content.title}</h2>
@@ -358,7 +360,7 @@ export default function TodayStudyPage() {
             </div>
 
             {/* Requirements list */}
-            <div className="apple-subcard p-5 rounded-2xl border border-white/14">
+            <div className="apple-subcard p-4 sm:p-5 rounded-2xl border border-white/14">
               <h3 className="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-2 font-mono">
                 Specification Requirements
               </h3>
@@ -486,7 +488,7 @@ export default function TodayStudyPage() {
       {/* TAB 3: RECALL & REVISION */}
       {activeTab === 'revision' && (
         <div className="space-y-6">
-          <div className="apple-glass p-7 md:p-8 rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[24px] sm:rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div>
               <span className="text-xs font-mono text-amber-300 font-bold uppercase tracking-wider">10-Minute Active Recall</span>
               <h2 className="text-xl md:text-2xl font-bold text-white mt-1">Spaced Repetition & Daily Summary</h2>

@@ -149,7 +149,7 @@ export default function SubjectsPage() {
 
         <button
           onClick={() => setShowAddSubjectModal(true)}
-          className="apple-btn-primary flex items-center gap-2 px-5 py-3 rounded-2xl text-xs font-bold cursor-pointer shadow-lg"
+          className="apple-btn-primary flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs font-bold cursor-pointer shadow-lg w-full md:w-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Add Custom Subject</span>

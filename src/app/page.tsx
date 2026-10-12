@@ -303,12 +303,12 @@ export default function DashboardPage() {
           </div>
 
           <div className="apple-subcard flex flex-col sm:flex-row items-center justify-between gap-4 p-4.5 rounded-2xl border border-white/14">
-            <div className="text-xs text-slate-200">
+            <div className="text-xs text-slate-200 text-center sm:text-left">
               <span className="font-semibold text-white">Daily Gate Rule:</span> Complete and verify both theory and practical lab tasks before the daily assessment unlocks.
             </div>
             <Link
               href="/today"
-              className="apple-btn-primary px-5 py-2.5 rounded-2xl text-xs font-bold shrink-0 cursor-pointer"
+              className="apple-btn-primary px-5 py-2.5 rounded-2xl text-xs font-bold shrink-0 cursor-pointer w-full sm:w-auto text-center"
             >
               Open Day {today?.dayNumber || 1} Workspace →
             </Link>

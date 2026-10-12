@@ -193,14 +193,14 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
           {settings.darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-400" />}
         </button>
 
-        {/* Reset Demo Button */}
+        {/* Reset Demo Button (Hidden on xs mobile screens to save space) */}
         <button
           onClick={handleResetDemo}
-          className="apple-glass-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full text-slate-300 hover:text-rose-300 text-xs transition cursor-pointer"
+          className="apple-glass-pill hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-slate-300 hover:text-rose-300 text-xs transition cursor-pointer"
           title="Reset demo data"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Reset</span>
+          <span>Reset</span>
         </button>
 
         {/* Owner Profile & Lock Button */}

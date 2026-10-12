@@ -115,19 +115,19 @@ export default function ResourcesPage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header Banner */}
-      <div className="apple-glass-elevated p-8 md:p-10 rounded-[36px] border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.6)] flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-10 rounded-[26px] sm:rounded-[36px] border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.6)] flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
         {/* Ambient background glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-600/20 via-indigo-600/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-2.5">
+          <div className="flex flex-wrap items-center gap-2 mb-2.5">
             <span className="apple-glass-pill text-[11px] font-mono font-semibold text-blue-300 px-3 py-1 flex items-center gap-1.5 shadow-sm border border-blue-400/30">
               <FolderOpen className="w-3.5 h-3.5 text-blue-400" />
               <span>C-DAC PGCP-BDA Courseware</span>
             </span>
             <span className="text-xs text-slate-400 font-mono">21 Course Assets • Full In-App Reader</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">
             Notes, Slide Decks & Document Reader
           </h1>
           <p className="text-xs md:text-sm text-slate-300 mt-1.5 max-w-2xl leading-relaxed">
@@ -136,15 +136,15 @@ export default function ResourcesPage() {
         </div>
 
         {/* Right Action: Upload + Reading Progress */}
-        <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-3 shrink-0 relative z-10">
-          <label className="apple-btn-primary flex items-center gap-2 px-6 py-3.5 rounded-2xl cursor-pointer text-xs font-bold shadow-lg">
+        <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-3 shrink-0 relative z-10 w-full sm:w-auto">
+          <label className="apple-btn-primary flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl cursor-pointer text-xs font-bold shadow-lg w-full sm:w-auto">
             <Upload className="w-4 h-4" />
             <span>Upload Course Material</span>
             <input type="file" onChange={handleSimulateUpload} className="hidden" />
           </label>
 
           {/* Quick Stats Pill */}
-          <div className="apple-glass-pill px-4 py-2 rounded-2xl border border-white/14 flex items-center gap-3 text-xs">
+          <div className="apple-glass-pill px-4 py-2 rounded-2xl border border-white/14 flex items-center justify-between sm:justify-start gap-3 text-xs w-full sm:w-auto">
             <span className="text-slate-300">Reading Progress:</span>
             <span className="font-bold text-white font-mono">{studiedCount} / {documents.length}</span>
             <span className="text-emerald-400 font-bold font-mono">({progressPercent}%)</span>
