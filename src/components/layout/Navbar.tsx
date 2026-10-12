@@ -13,12 +13,19 @@ import {
   CheckCircle2,
   Lock,
   ShieldCheck,
+  Menu,
+  X,
 } from 'lucide-react';
 import { StorageManager } from '@/lib/storage';
 import { UserProfile, UserSettings, AppNotification } from '@/types';
 import { useAuth } from '@/components/auth/AuthProvider';
 
-export function Navbar() {
+interface NavbarProps {
+  onToggleMobileMenu?: () => void;
+  isMobileMenuOpen?: boolean;
+}
+
+export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
   const { session, logout } = useAuth();
   const [profile, setProfile] = useState<UserProfile>(StorageManager.getUserProfile());
   const [settings, setSettings] = useState<UserSettings>(StorageManager.getUserSettings());
@@ -68,21 +75,31 @@ export function Navbar() {
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   return (
-    <header className="h-16 border-b border-white/14 bg-black/30 backdrop-blur-3xl px-6 flex items-center justify-between sticky top-0 z-40 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-      {/* Left: Active Status & AI pill */}
-      <div className="flex items-center gap-3">
+    <header className="h-16 border-b border-white/14 bg-black/40 backdrop-blur-3xl px-3 sm:px-6 flex items-center justify-between sticky top-0 z-40 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+      {/* Left: Hamburger menu on mobile + Active Status & AI pill */}
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={onToggleMobileMenu}
+          className="lg:hidden p-2 rounded-2xl apple-glass text-slate-200 hover:text-white transition cursor-pointer border border-white/16 shrink-0"
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? <X className="w-4 h-4 text-blue-400" /> : <Menu className="w-4 h-4" />}
+        </button>
+
         {/* Apple Style Active Owner Badge */}
-        <div className="apple-glass-pill flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs">
+        <div className="apple-glass-pill flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs shrink-0">
           <span className="w-2 h-2 rounded-full bg-[#30d158] shadow-[0_0_8px_#30d158] animate-pulse" />
           <span className="text-emerald-200 font-semibold tracking-wide flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Harshal (Owner)</span>
+            <span className="hidden sm:inline">Harshal (Owner)</span>
+            <span className="sm:hidden font-bold">Harshal</span>
           </span>
         </div>
 
         {/* AI Provider Status Pill */}
         <div
-          className={`apple-glass-pill flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition ${
+          className={`apple-glass-pill hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition shrink-0 ${
             aiStatus.isConfigured
               ? 'bg-purple-500/15 border-purple-400/30 text-purple-200'
               : 'bg-blue-500/15 border-blue-400/30 text-blue-200'
@@ -90,24 +107,25 @@ export function Navbar() {
           title={aiStatus.isConfigured ? 'OpenAI model active' : 'Resilient offline engine with C-DAC curriculum generators'}
         >
           <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-          <span>AI: {aiStatus.isConfigured ? aiStatus.model : 'Apple Neural Engine'}</span>
+          <span className="hidden md:inline">AI: {aiStatus.isConfigured ? aiStatus.model : 'Apple Neural Engine'}</span>
+          <span className="md:hidden">AI</span>
         </div>
       </div>
 
       {/* Right controls */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
         {/* Daily Time Budget Badge */}
-        <div className="apple-glass-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs text-slate-100">
+        <div className="apple-glass-pill flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs text-slate-100">
           <Clock className="w-3.5 h-3.5 text-blue-400" />
-          <span className="text-slate-300">Budget:</span>
+          <span className="hidden sm:inline text-slate-300">Budget:</span>
           <span className="font-bold text-white font-mono">{profile.dailyTimeBudget}m</span>
         </div>
 
         {/* Study Streak Badge with Apple Orange */}
-        <div className="apple-glass-pill flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/35 text-xs text-amber-200 font-semibold">
+        <div className="apple-glass-pill flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/15 border border-amber-400/35 text-xs text-amber-200 font-semibold">
           <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
-          <span className="text-amber-300">Streak:</span>
-          <span className="font-bold text-white font-mono">{profile.currentStreak} Days</span>
+          <span className="hidden sm:inline text-amber-300">Streak:</span>
+          <span className="font-bold text-white font-mono">{profile.currentStreak}d</span>
         </div>
 
         {/* Notifications Dropdown */}

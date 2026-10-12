@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Sidebar } from './Sidebar';
 import { Navbar } from './Navbar';
@@ -9,6 +9,12 @@ import { useAuth } from '../auth/AuthProvider';
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { session, isLoading } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Auto-close mobile drawer when user navigates
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   // If on login page, render full screen auth view
   if (pathname === '/login') {
@@ -52,15 +58,21 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <div className="fixed top-1/4 right-1/6 w-[36rem] h-[36rem] bg-gradient-to-br from-cyan-500/14 via-blue-500/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0" />
       <div className="fixed bottom-1/3 left-1/3 w-[30rem] h-[30rem] bg-gradient-to-tr from-amber-500/8 via-purple-600/8 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
 
-      {/* Fixed Glass Sidebar */}
+      {/* Responsive Glass Sidebar (Desktop sticky + Mobile slide-over) */}
       <div className="relative z-20">
-        <Sidebar />
+        <Sidebar
+          mobileOpen={mobileMenuOpen}
+          onCloseMobile={() => setMobileMenuOpen(false)}
+        />
       </div>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 relative z-10">
-        <Navbar />
-        <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto overflow-y-auto">
+        <Navbar
+          onToggleMobileMenu={() => setMobileMenuOpen((prev) => !prev)}
+          isMobileMenuOpen={mobileMenuOpen}
+        />
+        <main className="flex-1 p-3 sm:p-5 md:p-8 max-w-7xl w-full mx-auto overflow-y-auto min-w-0">
           {children}
         </main>
       </div>

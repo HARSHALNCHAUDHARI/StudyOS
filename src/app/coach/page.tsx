@@ -134,14 +134,14 @@ Review today’s practical lab on **MySQL constraints** and ensure child tables 
   return (
     <div className="space-y-6 animate-fadeIn max-w-5xl mx-auto pb-12">
       {/* Header Banner with Apple Glass */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[32px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 via-indigo-500 to-blue-500 flex items-center justify-center text-white shadow-lg ring-1 ring-white/25 shrink-0">
-            <Sparkles className="w-6 h-6 text-purple-200 animate-pulse" />
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[32px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3.5 sm:gap-4">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-purple-500 via-indigo-500 to-blue-500 flex items-center justify-center text-white shadow-lg ring-1 ring-white/25 shrink-0">
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-purple-200 animate-pulse" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight">Intelligent AI Study Coach</h1>
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight">Intelligent AI Study Coach</h1>
               <span className="apple-glass-pill px-2.5 py-0.5 rounded-full text-[10px] font-mono text-purple-300 font-bold border border-purple-400/35 uppercase">
                 Sprint Active
               </span>
@@ -152,12 +152,12 @@ Review today’s practical lab on **MySQL constraints** and ensure child tables 
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5 self-start md:self-auto">
-          <div className="apple-glass-pill px-3.5 py-1.5 rounded-full text-xs font-mono text-purple-200 border border-purple-400/35 flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 self-start md:self-auto">
+          <div className="apple-glass-pill px-3 py-1.5 rounded-full text-xs font-mono text-purple-200 border border-purple-400/35 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
             <span>Online Mentor</span>
           </div>
-          <div className="apple-glass-pill px-3.5 py-1.5 rounded-full text-xs font-mono text-blue-200 border border-blue-400/30 flex items-center gap-1.5">
+          <div className="apple-glass-pill px-3 py-1.5 rounded-full text-xs font-mono text-blue-200 border border-blue-400/30 flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-blue-400" />
             <span>Day {today?.dayNumber || 1} / 150</span>
           </div>
@@ -177,7 +177,7 @@ Review today’s practical lab on **MySQL constraints** and ensure child tables 
             <button
               key={idx}
               onClick={() => handleSendMessage(prompt)}
-              className="apple-glass-pill px-4 py-2 rounded-full text-xs text-slate-200 hover:text-white hover:bg-white/[0.14] whitespace-nowrap transition cursor-pointer shadow-sm border border-white/16 hover:border-white/30"
+              className="apple-glass-pill px-3.5 sm:px-4 py-2 rounded-full text-xs text-slate-200 hover:text-white hover:bg-white/[0.14] whitespace-nowrap transition cursor-pointer shadow-sm border border-white/16 hover:border-white/30"
             >
               {prompt}
             </button>
@@ -186,7 +186,7 @@ Review today’s practical lab on **MySQL constraints** and ensure child tables 
       </div>
 
       {/* Chat Messages Container */}
-      <div className="apple-glass rounded-[32px] border border-white/18 p-6 md:p-8 min-h-[520px] flex flex-col justify-between space-y-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <div className="apple-glass rounded-[24px] sm:rounded-[32px] border border-white/18 p-4 sm:p-6 md:p-8 min-h-[500px] flex flex-col justify-between space-y-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         {/* Messages Scroll Area */}
         <div className="space-y-6 overflow-y-auto max-h-[520px] pr-2">
           {messages.map((m) => {
@@ -252,25 +252,25 @@ Review today’s practical lab on **MySQL constraints** and ensure child tables 
 
         {/* Input Form with Sleek Floating Apple Glass */}
         <div className="pt-4 border-t border-white/14">
-          <div className="flex items-center gap-3 bg-black/40 p-2 rounded-full border border-white/18 shadow-inner backdrop-blur-2xl">
+          <div className="flex items-center gap-2 sm:gap-3 bg-black/40 p-1.5 sm:p-2 rounded-full border border-white/18 shadow-inner backdrop-blur-2xl">
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-              placeholder="Ask anything (e.g. 'Why DECIMAL over FLOAT?', Python MRO, SQL joins, today's focus)..."
-              className="flex-1 bg-transparent px-4 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none font-medium"
+              placeholder="Ask anything (e.g. 'Why DECIMAL over FLOAT?', Python MRO, SQL joins)..."
+              className="flex-1 bg-transparent px-3 sm:px-4 py-2 sm:py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none font-medium min-w-0"
             />
             <button
               onClick={() => handleSendMessage()}
               disabled={isLoading || !inputText.trim()}
-              className="apple-btn-primary px-5 py-2.5 rounded-full flex items-center gap-2 text-xs font-bold disabled:opacity-40 transition cursor-pointer shadow-md"
+              className="apple-btn-primary px-4 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-xs font-bold disabled:opacity-40 transition cursor-pointer shadow-md shrink-0"
             >
               <span>Send</span>
               <Send className="w-3.5 h-3.5" />
             </button>
           </div>
-          <div className="flex items-center justify-between px-3 mt-2 text-[10px] text-slate-400">
+          <div className="hidden sm:flex items-center justify-between px-3 mt-2 text-[10px] text-slate-400">
             <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Enter</kbd> to ask your coach</span>
             <span>Grounded in C-DAC BDA Curriculum & IEEE Standards</span>
           </div>

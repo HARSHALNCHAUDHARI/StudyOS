@@ -121,13 +121,13 @@ export function CourseDocumentReader({
         }`}
       >
         {/* Top Header Bar */}
-        <div className="p-4 sm:px-6 border-b border-white/10 flex items-center justify-between gap-4 bg-black/40">
+        <div className="p-3 sm:p-4 sm:px-6 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-black/40 shrink-0">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="p-2.5 rounded-2xl apple-glass border border-white/14 flex items-center justify-center text-blue-400 shrink-0">
-              {document.type === 'pptx' && <Presentation className="w-5 h-5 text-amber-400" />}
-              {document.type === 'pdf' && <BookOpen className="w-5 h-5 text-rose-400" />}
-              {document.type === 'docx' && <FileText className="w-5 h-5 text-sky-400" />}
-              {document.type === 'csv' && <TableIcon className="w-5 h-5 text-emerald-400" />}
+            <div className="p-2 sm:p-2.5 rounded-2xl apple-glass border border-white/14 flex items-center justify-center text-blue-400 shrink-0">
+              {document.type === 'pptx' && <Presentation className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />}
+              {document.type === 'pdf' && <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-rose-400" />}
+              {document.type === 'docx' && <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-sky-400" />}
+              {document.type === 'csv' && <TableIcon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />}
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
@@ -142,7 +142,7 @@ export function CourseDocumentReader({
           </div>
 
           {/* Right Action Controls */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
             {/* View Mode Tabs */}
             <div className="flex items-center bg-white/[0.06] p-1 rounded-2xl border border-white/10">
               <button

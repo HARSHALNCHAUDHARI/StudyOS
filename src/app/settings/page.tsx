@@ -62,9 +62,9 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6 animate-fadeIn max-w-4xl mx-auto pb-12">
       {/* Header */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-between">
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3.5">
-          <div className="p-3 rounded-2xl apple-subcard text-blue-400 shadow-md">
+          <div className="p-3 rounded-2xl apple-subcard text-blue-400 shadow-md shrink-0">
             <Settings className="w-6 h-6" />
           </div>
           <div>
@@ -74,7 +74,7 @@ export default function SettingsPage() {
         </div>
 
         {saveSuccess && (
-          <span className="apple-glass-pill flex items-center gap-1.5 text-xs text-emerald-200 bg-emerald-500/20 px-3.5 py-1.5 rounded-full border border-emerald-400/40 font-bold">
+          <span className="apple-glass-pill flex items-center gap-1.5 text-xs text-emerald-200 bg-emerald-500/20 px-3.5 py-1.5 rounded-full border border-emerald-400/40 font-bold self-start sm:self-auto">
             <CheckCircle2 className="w-4 h-4 text-emerald-300" /> Settings Saved
           </span>
         )}
@@ -82,7 +82,7 @@ export default function SettingsPage() {
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* Owner Security Credentials Card */}
-        <div className="apple-glass p-6 md:p-7 rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+        <div className="apple-glass p-5 sm:p-7 rounded-[26px] sm:rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
           <h2 className="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-white/12">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>Owner Access & Security (Harshal Only)</span>
@@ -117,7 +117,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile Card */}
-        <div className="apple-glass p-6 md:p-7 rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+        <div className="apple-glass p-5 sm:p-7 rounded-[26px] sm:rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
           <h2 className="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-white/12">
             <User className="w-4 h-4 text-blue-400" />
             <span>Student Profile & Timeline</span>
@@ -167,7 +167,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Assessment & Gate Preferences */}
-        <div className="apple-glass p-6 md:p-7 rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+        <div className="apple-glass p-5 sm:p-7 rounded-[26px] sm:rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
           <h2 className="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-white/12">
             <Shield className="w-4 h-4 text-purple-300" />
             <span>Assessment & Completion Gate Standards</span>
@@ -211,10 +211,10 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex flex-col sm:flex-row justify-end">
           <button
             type="submit"
-            className="apple-btn-primary flex items-center gap-2 px-7 py-3 rounded-2xl text-white font-bold text-xs shadow-lg cursor-pointer"
+            className="apple-btn-primary flex items-center justify-center gap-2 px-7 py-3 rounded-2xl text-white font-bold text-xs shadow-lg cursor-pointer w-full sm:w-auto"
           >
             <Save className="w-4 h-4" />
             <span>Save Settings & Master PIN</span>
@@ -223,32 +223,32 @@ export default function SettingsPage() {
       </form>
 
       {/* Data Export & Reset Zone */}
-      <div className="apple-glass p-6 md:p-7 rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+      <div className="apple-glass p-5 sm:p-7 rounded-[26px] sm:rounded-[28px] border border-white/18 space-y-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
         <h2 className="text-sm font-bold text-white pb-3 border-b border-white/12">
           Data Portability & State Management
         </h2>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
           <div>
             <div className="font-semibold text-white">Full JSON Progress Export</div>
             <p className="text-[11px] text-slate-300 mt-0.5">Download all syllabus, quiz attempts, and submission logs.</p>
           </div>
           <button
             onClick={handleExportData}
-            className="apple-btn-secondary flex items-center gap-2 px-5 py-2.5 rounded-2xl font-semibold text-xs cursor-pointer shadow-sm"
+            className="apple-btn-secondary flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-semibold text-xs cursor-pointer shadow-sm w-full sm:w-auto"
           >
             <Download className="w-4 h-4 text-blue-400" />
             <span>Export Data (JSON)</span>
           </button>
         </div>
 
-        <div className="pt-3 border-t border-white/12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="pt-3 border-t border-white/12 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
           <div>
             <div className="font-semibold text-rose-300">Reset to Day 1 (150-Day Sprint)</div>
             <p className="text-[11px] text-slate-300 mt-0.5">Wipe all records and restart your study journey cleanly from Day 1 with the 150-day target.</p>
           </div>
           <button
             onClick={handleResetData}
-            className="apple-glass-pill flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-400/35 text-rose-200 hover:bg-rose-500/25 font-semibold text-xs transition cursor-pointer shadow-sm"
+            className="apple-glass-pill flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-400/35 text-rose-200 hover:bg-rose-500/25 font-semibold text-xs transition cursor-pointer shadow-sm w-full sm:w-auto"
           >
             <RotateCcw className="w-4 h-4 text-rose-400" />
             <span>Reset to Clean Day 1 State</span>

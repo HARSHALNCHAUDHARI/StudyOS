@@ -133,27 +133,27 @@ export default function PracticalLabPage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Top Header */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <span className="apple-glass-pill text-xs font-mono font-bold text-emerald-200 px-3 py-1 rounded-full border border-emerald-400/35 flex items-center gap-1.5">
               <Code2 className="w-3.5 h-3.5 text-emerald-300" />
               <span>Practical Lab</span>
             </span>
             <span className="text-xs text-slate-300 font-mono">Hands-on Execution Sandbox</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">
             Code & Query Verification Console
           </h1>
-          <p className="text-xs text-slate-200 mt-1">
+          <p className="text-xs text-slate-200 mt-1 max-w-2xl leading-relaxed">
             Solve, execute, and verify code challenges for MySQL, Python, R, and Java.
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full md:w-auto">
           <button
             onClick={() => setCode(selectedLab.starterCode)}
-            className="apple-btn-secondary flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold cursor-pointer"
+            className="apple-btn-secondary flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-full text-xs font-semibold cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset</span>
@@ -161,14 +161,14 @@ export default function PracticalLabPage() {
           <button
             onClick={handleExecute}
             disabled={isRunning}
-            className="apple-btn-primary flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold transition shadow-lg cursor-pointer"
+            className="apple-btn-primary flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold transition shadow-lg cursor-pointer"
           >
             <Play className="w-3.5 h-3.5 fill-white" />
             <span>{isRunning ? 'Running...' : 'Run Code'}</span>
           </button>
           <button
             onClick={handleSaveSubmission}
-            className="apple-glass-pill flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-100 text-xs font-bold transition shadow-lg cursor-pointer"
+            className="apple-glass-pill w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-100 text-xs font-bold transition shadow-lg cursor-pointer"
           >
             <Save className="w-3.5 h-3.5 text-emerald-300" />
             <span>Submit Work</span>

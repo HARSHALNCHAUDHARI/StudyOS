@@ -167,14 +167,14 @@ export default function ResourcesPage() {
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-2 flex-wrap w-full md:w-auto">
+        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap overflow-x-auto no-scrollbar w-full md:w-auto pb-1 sm:pb-0">
           {/* Subject Filter */}
-          <div className="flex items-center bg-white/[0.06] p-1 rounded-2xl border border-white/10">
+          <div className="flex items-center bg-white/[0.06] p-1 rounded-2xl border border-white/10 shrink-0">
             {['All', 'MySQL', 'Python'].map((sub) => (
               <button
                 key={sub}
                 onClick={() => setSelectedSubject(sub)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer ${
                   selectedSubject === sub
                     ? 'bg-blue-600 text-white shadow-sm'
                     : 'text-slate-300 hover:text-white'
@@ -186,7 +186,7 @@ export default function ResourcesPage() {
           </div>
 
           {/* Type Filter */}
-          <div className="flex items-center bg-white/[0.06] p-1 rounded-2xl border border-white/10">
+          <div className="flex items-center bg-white/[0.06] p-1 rounded-2xl border border-white/10 shrink-0">
             {[
               { label: 'All', val: 'All' },
               { label: 'Slides', val: 'pptx' },
@@ -197,7 +197,7 @@ export default function ResourcesPage() {
               <button
                 key={t.val}
                 onClick={() => setSelectedType(t.val)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer ${
                   selectedType === t.val
                     ? 'bg-indigo-600 text-white shadow-sm'
                     : 'text-slate-300 hover:text-white'

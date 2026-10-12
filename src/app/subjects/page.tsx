@@ -131,7 +131,7 @@ export default function SubjectsPage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[28px] sm:rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="apple-glass-pill text-xs font-mono font-bold text-blue-200 px-3 py-1 rounded-full border border-blue-400/35">
@@ -208,7 +208,7 @@ export default function SubjectsPage() {
 
       {/* Active Subject Module & Topic Tree */}
       {selectedData && (
-        <div className="apple-glass p-6 md:p-8 rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+        <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[24px] sm:rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
           <div className="flex items-center justify-between pb-4 border-b border-white/12">
             <div>
               <span className="text-xs font-mono text-blue-300 font-bold uppercase tracking-wider">
@@ -334,7 +334,7 @@ export default function SubjectsPage() {
       {/* MODAL: ADD CUSTOM SUBJECT */}
       {showAddSubjectModal && (
         <div className="fixed inset-0 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-fadeIn">
-          <div className="apple-glass-elevated p-7 md:p-8 rounded-[32px] border border-white/24 max-w-md w-full space-y-4 shadow-2xl">
+          <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[32px] border border-white/24 max-w-md w-full space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/12">
               <h3 className="font-bold text-base text-white">Add New PGCP-BDA Subject</h3>
               <button
@@ -404,7 +404,7 @@ export default function SubjectsPage() {
       {/* MODAL: EDIT TOPIC */}
       {editingTopic && (
         <div className="fixed inset-0 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-fadeIn">
-          <div className="apple-glass-elevated p-7 md:p-8 rounded-[32px] border border-white/24 max-w-lg w-full space-y-4 shadow-2xl">
+          <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[32px] border border-white/24 max-w-lg w-full space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/12">
               <h3 className="font-bold text-base text-white">Edit Topic</h3>
               <button onClick={() => setEditingTopic(null)} className="apple-glass-pill p-1.5 rounded-xl text-slate-300 hover:text-white cursor-pointer">

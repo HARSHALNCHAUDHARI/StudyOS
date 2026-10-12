@@ -53,19 +53,19 @@ export default function RemindersPage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header */}
-      <div className="apple-glass p-7 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-5">
+      <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-5">
         <div>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="apple-glass-pill text-[11px] font-mono font-semibold text-blue-300 px-3 py-1 flex items-center gap-1.5 shadow-sm">
               <Bell className="w-3.5 h-3.5 text-blue-400" />
               <span>Notification Hub</span>
             </span>
             <span className="text-xs text-slate-400 font-mono">Timezone-Aware</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Study Reminders & Notification Centre
           </h1>
-          <p className="text-sm text-slate-300/90 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-slate-300/90 mt-1 max-w-2xl">
             Configure daily study alarms, quiet hours, and inspect automated spaced repetition alert logs.
           </p>
         </div>
@@ -73,8 +73,8 @@ export default function RemindersPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left: Preferences Form (2 cols) */}
-        <div className="lg:col-span-2 apple-glass p-7 rounded-3xl space-y-6">
-          <h2 className="text-lg font-bold text-white pb-3 border-b border-white/10">
+        <div className="lg:col-span-2 apple-glass p-5 sm:p-7 rounded-[26px] sm:rounded-3xl space-y-6">
+          <h2 className="text-base sm:text-lg font-bold text-white pb-3 border-b border-white/10">
             Reminder Scheduling Preferences
           </h2>
 
@@ -107,12 +107,12 @@ export default function RemindersPage() {
             </div>
 
             {/* Quiet Hours */}
-            <div className="p-5 rounded-2xl apple-subcard space-y-3">
+            <div className="p-4 sm:p-5 rounded-2xl apple-subcard space-y-3">
               <div className="flex items-center gap-2 font-bold text-slate-200 text-sm">
                 <VolumeX className="w-4 h-4 text-slate-400" />
                 <span>Quiet Hours (No notifications sent)</span>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-slate-400 text-xs mb-1 font-medium">Start Time</label>
                   <input
@@ -135,7 +135,7 @@ export default function RemindersPage() {
             </div>
 
             {/* Browser Permission Control */}
-            <div className="p-5 rounded-2xl apple-subcard flex items-center justify-between">
+            <div className="p-4 sm:p-5 rounded-2xl apple-subcard flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="font-bold text-white text-sm">Browser Push Notifications</div>
                 <p className="text-xs text-slate-400 mt-0.5">
@@ -146,21 +146,21 @@ export default function RemindersPage() {
                 <button
                   type="button"
                   onClick={handleRequestBrowserPermission}
-                  className="apple-btn-primary px-4 py-2.5 rounded-xl text-xs font-bold shadow-md"
+                  className="apple-btn-primary px-4 py-2.5 rounded-xl text-xs font-bold shadow-md w-full sm:w-auto"
                 >
                   Enable Browser Push
                 </button>
               ) : (
-                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1.5 apple-glass-pill px-3 py-1.5">
+                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1.5 apple-glass-pill px-3 py-1.5 self-start sm:self-auto">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Enabled
                 </span>
               )}
             </div>
 
-            <div className="pt-2 flex justify-end">
+            <div className="pt-2 flex flex-col sm:flex-row justify-end">
               <button
                 type="submit"
-                className="apple-btn-primary px-6 py-3 rounded-xl text-xs font-bold shadow-lg"
+                className="apple-btn-primary px-6 py-3 rounded-xl text-xs font-bold shadow-lg w-full sm:w-auto"
               >
                 Save Notification Settings
               </button>

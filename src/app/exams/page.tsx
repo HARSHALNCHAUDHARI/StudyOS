@@ -139,25 +139,25 @@ export default function FinalExamsPage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <span className="apple-glass-pill text-xs font-mono font-bold text-indigo-200 px-3 py-1 rounded-full border border-indigo-400/35 flex items-center gap-1.5">
               <GraduationCap className="w-3.5 h-3.5 text-indigo-300" />
               <span>Final Examinations</span>
             </span>
             <span className="text-xs text-slate-300 font-mono">100 Marks • 120 Minutes</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">
             Subject Final Mock & Evaluation Arena
           </h1>
-          <p className="text-xs text-slate-200 mt-1">
+          <p className="text-xs text-slate-200 mt-1 max-w-2xl leading-relaxed">
             Comprehensive C-DAC evaluation covering the complete configured syllabus: 40 Theory Marks + 60 Practical Marks.
           </p>
         </div>
 
         {examActive && (
-          <div className="apple-glass-pill flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 shadow-md">
+          <div className="apple-glass-pill flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 shadow-md self-start md:self-auto">
             <Clock className="w-5 h-5 text-indigo-300" />
             <div className="font-mono">
               <div className="text-xl font-extrabold text-white">{formatTimer(timeLeft)}</div>
@@ -170,13 +170,13 @@ export default function FinalExamsPage() {
       {/* EXAM NOT STARTED VIEW */}
       {!examActive && !submittedAttempt && (
         <div className="space-y-6">
-          <div className="apple-glass p-8 md:p-10 rounded-[32px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="apple-glass p-5 sm:p-8 md:p-10 rounded-[26px] sm:rounded-[32px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/12">
               <div>
                 <span className="text-xs font-mono text-indigo-300 uppercase font-bold tracking-wider">
                   {MOCK_EXAM.subjectTitle}
                 </span>
-                <h2 className="text-xl md:text-2xl font-bold text-white mt-1">{MOCK_EXAM.title}</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mt-1">{MOCK_EXAM.title}</h2>
                 <p className="text-xs text-slate-200 mt-1 leading-relaxed">
                   Full syllabus assessment: Relational Architecture, Normalization, Advanced SQL, Indexing & Transactions.
                 </p>
@@ -184,7 +184,7 @@ export default function FinalExamsPage() {
 
               <button
                 onClick={handleStartExam}
-                className="apple-btn-primary flex items-center gap-2 px-7 py-3.5 rounded-2xl text-white font-bold text-xs shadow-lg cursor-pointer shrink-0"
+                className="apple-btn-primary flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-2xl text-white font-bold text-xs shadow-lg cursor-pointer w-full md:w-auto shrink-0"
               >
                 <Play className="w-4 h-4 fill-white" />
                 <span>Start Final Mock Exam (120 Mins)</span>
@@ -256,9 +256,9 @@ export default function FinalExamsPage() {
             <div className="space-y-6">
               {MOCK_EXAM.theoryQuestions.map((q, idx) => (
                 <div key={q.id} className="space-y-2 text-xs">
-                  <div className="flex items-center justify-between font-semibold text-slate-100">
-                    <span>Q{idx + 1}. {q.question}</span>
-                    <span className="apple-glass-pill text-[10px] font-mono text-indigo-300 px-2.5 py-1 rounded-full border border-indigo-400/35 shrink-0 font-bold">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-100">
+                    <span className="leading-relaxed">Q{idx + 1}. {q.question}</span>
+                    <span className="apple-glass-pill text-[10px] font-mono text-indigo-300 px-2.5 py-1 rounded-full border border-indigo-400/35 shrink-0 self-start sm:self-auto font-bold">
                       [{q.marks} Marks]
                     </span>
                   </div>
@@ -275,7 +275,7 @@ export default function FinalExamsPage() {
           </div>
 
           {/* Section 2: Practical */}
-          <div className="apple-glass p-7 md:p-8 rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div className="pb-3 border-b border-white/12">
               <span className="text-xs font-mono font-bold text-emerald-300 uppercase tracking-wider">Section B</span>
               <h2 className="text-base font-bold text-white mt-0.5">Practical Queries & Data Modeling (60 Marks)</h2>
@@ -284,9 +284,9 @@ export default function FinalExamsPage() {
             <div className="space-y-6">
               {MOCK_EXAM.practicalQuestions.map((q, idx) => (
                 <div key={q.id} className="space-y-2 text-xs">
-                  <div className="flex items-center justify-between font-semibold text-slate-100">
-                    <span>Q{idx + 5}. {q.question}</span>
-                    <span className="apple-glass-pill text-[10px] font-mono text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-400/35 shrink-0 font-bold">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-100">
+                    <span className="leading-relaxed">Q{idx + 5}. {q.question}</span>
+                    <span className="apple-glass-pill text-[10px] font-mono text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-400/35 shrink-0 self-start sm:self-auto font-bold">
                       [{q.marks} Marks]
                     </span>
                   </div>
@@ -302,10 +302,10 @@ export default function FinalExamsPage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4">
             <button
               onClick={handleSubmitExam}
-              className="apple-btn-primary px-8 py-3.5 rounded-full font-bold text-sm shadow-xl cursor-pointer"
+              className="apple-btn-primary px-8 py-3.5 rounded-full font-bold text-sm shadow-xl cursor-pointer w-full sm:w-auto"
             >
               Submit Final Examination for AI Grading
             </button>

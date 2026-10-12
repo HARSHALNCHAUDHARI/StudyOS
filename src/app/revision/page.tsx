@@ -40,24 +40,24 @@ export default function RevisionCentrePage() {
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header */}
-      <div className="apple-glass p-7 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-5">
+      <div className="apple-glass p-5 sm:p-7 md:p-8 rounded-[26px] sm:rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-5">
         <div>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="apple-glass-pill text-[11px] font-mono font-semibold text-purple-300 px-3 py-1 flex items-center gap-1.5 shadow-sm">
               <RotateCcw className="w-3.5 h-3.5 text-purple-400" />
               <span>Spaced Repetition</span>
             </span>
             <span className="text-xs text-slate-400 font-mono">1, 3, 7 & 14 Day Intervals</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Revision Centre & Memory Consolidation
           </h1>
-          <p className="text-sm text-slate-300/90 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-slate-300/90 mt-1 max-w-2xl">
             Combat the forgetting curve. Review weak concepts and past study milestones automatically scheduled by AI.
           </p>
         </div>
 
-        <div className="flex items-center gap-3 apple-subcard px-5 py-3 rounded-2xl text-xs font-mono shadow-sm">
+        <div className="flex items-center gap-3 apple-subcard px-5 py-3 rounded-2xl text-xs font-mono shadow-sm self-start md:self-auto">
           <Calendar className="w-4 h-4 text-blue-400" />
           <span className="text-slate-300 font-medium">Queue:</span>
           <span className="font-bold text-white text-sm">{revisions.filter((r) => !r.isCompleted).length} Due</span>
@@ -67,11 +67,11 @@ export default function RevisionCentrePage() {
       {/* Main Grid: Active Recall Flashcard & Schedule Queue */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Active Recall Card (2 cols) */}
-        <div className="lg:col-span-2 apple-glass p-7 rounded-3xl space-y-6 flex flex-col justify-between">
+        <div className="lg:col-span-2 apple-glass p-5 sm:p-7 rounded-[26px] sm:rounded-3xl space-y-6 flex flex-col justify-between">
           {activeItem ? (
             <div className="space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                <span className="apple-glass-pill text-[11px] font-mono text-blue-300 font-bold uppercase px-3 py-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
+                <span className="apple-glass-pill text-[11px] font-mono text-blue-300 font-bold uppercase px-3 py-1 self-start sm:self-auto">
                   {activeItem.subjectTitle} • Stage {activeItem.stage} ({activeItem.intervalDays}-Day Interval)
                 </span>
                 <span className="text-xs font-mono text-slate-300">
@@ -81,11 +81,11 @@ export default function RevisionCentrePage() {
 
               <div>
                 <span className="text-xs font-mono uppercase text-slate-400 font-semibold tracking-wide">Target Concept</span>
-                <h2 className="text-2xl font-bold text-white mt-1">{activeItem.topicTitle}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">{activeItem.topicTitle}</h2>
               </div>
 
               {/* Recall Prompt */}
-              <div className="p-6 rounded-2xl apple-subcard space-y-3">
+              <div className="p-5 sm:p-6 rounded-2xl apple-subcard space-y-3">
                 <div className="flex items-center gap-2 text-xs font-bold text-amber-300">
                   <Sparkles className="w-4 h-4 text-amber-400" />
                   <span>Active Recall Challenge</span>
@@ -97,7 +97,7 @@ export default function RevisionCentrePage() {
 
               {/* Reveal Explanation Toggle */}
               {showAnswer ? (
-                <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/15 space-y-3 font-mono text-xs text-slate-200 leading-relaxed animate-fadeIn backdrop-blur-xl">
+                <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/15 space-y-3 font-mono text-xs text-slate-200 leading-relaxed animate-fadeIn backdrop-blur-xl">
                   <div className="font-bold text-emerald-400 text-sm">Key Recall Points:</div>
                   <ul className="space-y-2.5 list-disc pl-5 text-xs text-slate-300">
                     <li>A Candidate Key is a minimal super key containing no extraneous attributes.</li>
@@ -116,20 +116,20 @@ export default function RevisionCentrePage() {
               )}
 
               {/* Self-Rating & Advance Stage */}
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <button
                   onClick={() => setShowAnswer(!showAnswer)}
-                  className="text-xs font-semibold text-slate-400 hover:text-white transition"
+                  className="text-xs font-semibold text-slate-400 hover:text-white transition text-center sm:text-left"
                 >
                   {showAnswer ? 'Hide Solution' : 'View Solution'}
                 </button>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
                     onClick={() => handleAdvanceRevision(activeItem.id)}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs shadow-lg transition active:scale-[0.98]"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs shadow-lg transition active:scale-[0.98]"
                   >
-                    <CheckCircle2 className="w-4 h-4" />
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
                     <span>Recalled Successfully (Advance to Next Interval)</span>
                   </button>
                 </div>

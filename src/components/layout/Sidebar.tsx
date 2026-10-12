@@ -17,9 +17,9 @@ import {
   Settings,
   Sparkles,
   ChevronRight,
+  X,
 } from 'lucide-react';
 import { StorageManager } from '@/lib/storage';
-import { UserProfile } from '@/types';
 
 const NAV_ITEMS = [
   { label: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -35,7 +35,12 @@ const NAV_ITEMS = [
   { label: 'Settings', href: '/settings', icon: Settings },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  mobileOpen?: boolean;
+  onCloseMobile?: () => void;
+}
+
+export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
   const pathname = usePathname();
   const [profile, setProfile] = React.useState(StorageManager.getUserProfile());
 
@@ -49,28 +54,46 @@ export function Sidebar() {
   );
   const progressPercent = Math.min(100, Math.max(2, Math.round(((150 - daysRemaining) / 150) * 100)));
 
-  return (
-    <aside className="w-64 border-r border-white/14 bg-black/30 backdrop-blur-3xl flex flex-col justify-between shrink-0 h-screen sticky top-0 overflow-y-auto z-20 shadow-[10px_0_40px_rgba(0,0,0,0.4)]">
+  const handleLinkClick = () => {
+    onCloseMobile?.();
+  };
+
+  const sidebarContent = (
+    <div className="flex flex-col justify-between h-full min-h-full">
       <div>
         {/* Brand Header */}
-        <div className="p-5 border-b border-white/10 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 p-[1px] shadow-[0_0_20px_rgba(10,132,255,0.4)]">
-            <div className="w-full h-full bg-[#07090e]/90 rounded-2xl flex items-center justify-center font-bold text-lg text-white">
-              OS
+        <div className="p-5 border-b border-white/10 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 p-[1px] shadow-[0_0_20px_rgba(10,132,255,0.4)]">
+              <div className="w-full h-full bg-[#07090e]/90 rounded-2xl flex items-center justify-center font-bold text-lg text-white">
+                OS
+              </div>
+            </div>
+            <div>
+              <h1 className="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
+                StudyOS <span className="text-[10px] bg-white/[0.12] text-blue-300 px-1.5 py-0.5 rounded-full font-mono border border-white/25">AI</span>
+              </h1>
+              <p className="text-[10px] text-slate-300 font-mono tracking-wider uppercase">C-DAC PGCP-BDA</p>
             </div>
           </div>
-          <div>
-            <h1 className="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
-              StudyOS <span className="text-[10px] bg-white/[0.12] text-blue-300 px-1.5 py-0.5 rounded-full font-mono border border-white/25">AI</span>
-            </h1>
-            <p className="text-[10px] text-slate-300 font-mono tracking-wider uppercase">C-DAC PGCP-BDA</p>
-          </div>
+
+          {/* Close button for mobile drawer */}
+          {onCloseMobile && (
+            <button
+              onClick={onCloseMobile}
+              className="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
         </div>
 
         {/* AI Study Coach Pill Banner */}
         <div className="p-3 mx-3 my-3 rounded-2xl bg-gradient-to-r from-purple-500/20 via-indigo-500/15 to-blue-500/15 border border-purple-400/30 backdrop-blur-xl shadow-sm hover:border-purple-400/50 transition">
           <Link
             href="/coach"
+            onClick={handleLinkClick}
             className="flex items-center justify-between group text-purple-200 hover:text-white transition-colors"
           >
             <div className="flex items-center gap-2">
@@ -82,7 +105,7 @@ export function Sidebar() {
         </div>
 
         {/* Navigation links in Apple pill format */}
-        <nav className="px-3 space-y-1">
+        <nav className="px-3 space-y-1 overflow-y-auto max-h-[calc(100vh-270px)]">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -90,6 +113,7 @@ export function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={handleLinkClick}
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-500/25 to-indigo-500/20 text-white font-semibold border border-blue-400/35 shadow-[0_4px_16px_rgba(10,132,255,0.2),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-xl'
@@ -112,7 +136,7 @@ export function Sidebar() {
       </div>
 
       {/* Target Exam Countdown Footer with frosted glass */}
-      <div className="p-4 border border-white/14 bg-white/[0.05] m-3 rounded-2xl backdrop-blur-xl shadow-lg">
+      <div className="p-4 border border-white/14 bg-white/[0.05] m-3 rounded-2xl backdrop-blur-xl shadow-lg shrink-0">
         <div className="flex items-center justify-between text-[11px] text-slate-200 mb-1.5 font-medium">
           <span>Sprint Horizon</span>
           <span className="text-blue-300 font-bold font-mono">{daysRemaining} Days</span>
@@ -125,6 +149,31 @@ export function Sidebar() {
         </div>
         <p className="text-[10px] text-slate-300 mt-2 text-center italic tracking-tight">Learn. Practise. Prove. Progress.</p>
       </div>
-    </aside>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Sticky Sidebar */}
+      <aside className="hidden lg:flex w-64 border-r border-white/14 bg-black/40 backdrop-blur-3xl flex-col shrink-0 h-screen sticky top-0 overflow-y-auto z-20 shadow-[10px_0_40px_rgba(0,0,0,0.4)]">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile Drawer Backdrop & Drawer */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Frosted Backdrop */}
+          <div
+            onClick={onCloseMobile}
+            className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fadeIn"
+          />
+
+          {/* Slide-out Drawer */}
+          <aside className="fixed inset-y-0 left-0 w-72 max-w-[85vw] border-r border-white/20 bg-[#0a0d18]/95 backdrop-blur-3xl z-50 shadow-2xl flex flex-col animate-slideRight">
+            {sidebarContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

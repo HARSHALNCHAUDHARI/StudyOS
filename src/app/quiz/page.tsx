@@ -187,16 +187,17 @@ export default function QuizArenaPage() {
   return (
     <div className="space-y-6 animate-fadeIn max-w-5xl mx-auto pb-12">
       {/* Quiz Top Header in Apple Glass */}
-      <div className="apple-glass-elevated p-6 md:p-8 rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      {/* Top Header Card with Apple Liquid Glass */}
+      <div className="apple-glass-elevated p-5 sm:p-7 md:p-8 rounded-[28px] sm:rounded-[30px] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <span className="apple-glass-pill text-xs font-mono font-bold text-purple-200 px-3 py-1 rounded-full border border-purple-400/35 flex items-center gap-1.5">
               <BrainCircuit className="w-3.5 h-3.5 text-purple-300" />
               <span>AI Quiz Arena</span>
             </span>
             <span className="text-xs text-slate-300 font-mono">10 Questions • Pass: 80%</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">
             {studyDay.topicTitle} Assessment
           </h1>
           <p className="text-xs text-slate-200 mt-1">
@@ -205,10 +206,10 @@ export default function QuizArenaPage() {
         </div>
 
         {/* Quiz Timer in Apple Frosted Pill */}
-        <div className="apple-glass-pill flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 shadow-md">
+        <div className="apple-glass-pill flex items-center gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-white/20 shadow-md self-start sm:self-auto">
           <Clock className={`w-5 h-5 ${timeLeft < 180 ? 'text-rose-400 animate-pulse' : 'text-purple-300'}`} />
           <div className="font-mono">
-            <div className={`text-xl font-extrabold ${timeLeft < 180 ? 'text-rose-400' : 'text-white'}`}>
+            <div className={`text-lg sm:text-xl font-extrabold ${timeLeft < 180 ? 'text-rose-400' : 'text-white'}`}>
               {formatTimer(timeLeft)}
             </div>
             <div className="text-[10px] text-slate-300 leading-none mt-0.5 font-medium">Time Remaining</div>
@@ -283,7 +284,7 @@ export default function QuizArenaPage() {
       {currentQ && (
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Main Question Panel (3 cols) */}
-          <div className="lg:col-span-3 apple-glass p-7 md:p-8 rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="lg:col-span-3 apple-glass p-5 sm:p-7 md:p-8 rounded-[24px] sm:rounded-[28px] border border-white/18 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div className="flex items-center justify-between pb-4 border-b border-white/12">
               <span className="text-xs font-mono font-bold text-blue-300">
                 Question {currentIndex + 1} of {questions.length}
@@ -294,7 +295,7 @@ export default function QuizArenaPage() {
             </div>
 
             {/* Question Text */}
-            <div className="text-base font-semibold text-white leading-relaxed">
+            <div className="text-sm sm:text-base font-semibold text-white leading-relaxed">
               {currentQ.questionText}
             </div>
 
@@ -322,11 +323,11 @@ export default function QuizArenaPage() {
                     key={opt.id}
                     onClick={() => handleSelectOption(currentQ.id, opt.id)}
                     disabled={isGraded}
-                    className={`w-full text-left p-4 rounded-2xl border text-xs transition flex items-center justify-between cursor-pointer ${optionStyles}`}
+                    className={`w-full text-left p-3.5 sm:p-4 rounded-2xl border text-xs transition flex items-center justify-between cursor-pointer gap-2 ${optionStyles}`}
                   >
                     <span>{opt.text}</span>
                     {isGraded && (
-                      <div>
+                      <div className="shrink-0">
                         {isCorrect && <CheckCircle2 className="w-4 h-4 text-[#30d158]" />}
                         {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-rose-400" />}
                       </div>
@@ -338,7 +339,7 @@ export default function QuizArenaPage() {
 
             {/* Explanation View (If graded) */}
             {quizResult && (
-              <div className="apple-subcard p-5 rounded-2xl bg-black/50 border border-white/16 space-y-2 mt-4 shadow-inner">
+              <div className="apple-subcard p-4 sm:p-5 rounded-2xl bg-black/50 border border-white/16 space-y-2 mt-4 shadow-inner">
                 <div className="text-xs font-bold text-blue-300 flex items-center gap-1.5">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span>C-DAC Explanation & Rationale</span>
@@ -350,7 +351,7 @@ export default function QuizArenaPage() {
             )}
 
             {/* Pagination Controls */}
-            <div className="flex items-center justify-between pt-4 border-t border-white/12">
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/12">
               <button
                 onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
                 disabled={currentIndex === 0}
@@ -360,7 +361,7 @@ export default function QuizArenaPage() {
                 <span>Previous</span>
               </button>
 
-              <div className="text-xs font-mono text-slate-300 font-semibold">
+              <div className="text-xs font-mono text-slate-300 font-semibold order-last sm:order-none w-full sm:w-auto text-center">
                 {totalAnswered} of {questions.length} Answered
               </div>
 
@@ -387,10 +388,10 @@ export default function QuizArenaPage() {
           </div>
 
           {/* Question Grid Navigator (1 col) */}
-          <div className="apple-glass p-6 rounded-[28px] border border-white/18 flex flex-col justify-between shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="apple-glass p-5 sm:p-6 rounded-[24px] sm:rounded-[28px] border border-white/18 flex flex-col justify-between shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
             <div>
               <h3 className="text-xs font-bold text-white mb-3">Question Palette</h3>
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-5 sm:grid-cols-10 lg:grid-cols-5 gap-2">
                 {questions.map((q, idx) => {
                   const isAnswered = !!selectedAnswers[q.id];
                   const isCurrent = idx === currentIndex;

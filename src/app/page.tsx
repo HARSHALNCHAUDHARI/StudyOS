@@ -100,13 +100,13 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Top Hero Banner with Apple Liquid Glass */}
-      <div className="relative overflow-hidden rounded-[32px] apple-glass-elevated p-8 md:p-10 border border-white/20 shadow-[0_24px_50px_rgba(0,0,0,0.55)]">
+      <div className="relative overflow-hidden rounded-[28px] sm:rounded-[32px] apple-glass-elevated p-6 sm:p-8 md:p-10 border border-white/20 shadow-[0_24px_50px_rgba(0,0,0,0.55)]">
         {/* Soft background ambient gradient */}
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-96 h-96 bg-gradient-to-br from-blue-500/25 via-indigo-500/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div>
-            <div className="flex items-center gap-2 mb-2.5">
+            <div className="flex flex-wrap items-center gap-2 mb-2.5">
               <span className="apple-glass-pill text-xs uppercase tracking-widest font-mono text-blue-200 font-bold px-3 py-1 rounded-full border border-blue-400/30">
                 Harshal&apos;s StudyOS
               </span>
@@ -114,25 +114,25 @@ export default function DashboardPage() {
                 Day {today?.dayNumber || 1} of 150 • C-DAC PGCP-BDA Sprint
               </span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Welcome, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-purple-300">Harshal</span>
             </h1>
-            <p className="text-slate-200 text-sm mt-1.5 max-w-xl leading-relaxed">
+            <p className="text-slate-200 text-xs sm:text-sm mt-1.5 max-w-xl leading-relaxed">
               Today&apos;s mandatory gate: <strong className="text-blue-300 font-semibold">{today?.topicTitle || 'File Systems vs DBMS & Relational Architecture'}</strong>. Complete theory notes and hands-on practical lab to unlock the Day 1 assessment.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <Link
               href="/today"
-              className="apple-btn-primary flex items-center gap-2 px-6 py-3 rounded-2xl text-xs font-semibold cursor-pointer shadow-lg"
+              className="apple-btn-primary flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl text-xs font-semibold cursor-pointer shadow-lg"
             >
               <span>{today?.status === 'completed' ? 'Review Today\'s Session' : `Start Day ${today?.dayNumber || 1} Study`}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/coach"
-              className="apple-btn-secondary flex items-center gap-2 px-5 py-3 rounded-2xl text-xs font-semibold cursor-pointer"
+              className="apple-btn-secondary flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl text-xs font-semibold cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-purple-300" />
               <span>Ask Coach</span>
@@ -211,18 +211,18 @@ export default function DashboardPage() {
       {/* Main Grid: Today's Gate Status & Weekly Study Hours */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 2 Cols: Today's Study Gate Status with Apple Glass Panel */}
-        <div className="lg:col-span-2 apple-glass rounded-[28px] p-6 md:p-8 space-y-5 border border-white/16 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
-          <div className="flex items-center justify-between pb-4 border-b border-white/12">
+        <div className="lg:col-span-2 apple-glass rounded-[28px] p-5 sm:p-7 md:p-8 space-y-5 border border-white/16 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/12">
             <div>
               <span className="text-xs font-mono text-blue-300 uppercase tracking-wider font-bold flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
                 <span>Mandatory Completion Gate</span>
               </span>
-              <h2 className="text-lg font-bold text-white mt-1">
+              <h2 className="text-base sm:text-lg font-bold text-white mt-1">
                 Today&apos;s Focus: {today?.topicTitle || 'File Systems vs DBMS & Relational Architecture'}
               </h2>
             </div>
-            <span className={`text-xs px-3.5 py-1.5 rounded-full font-mono font-bold uppercase tracking-wider ${
+            <span className={`text-xs px-3.5 py-1.5 rounded-full font-mono font-bold uppercase tracking-wider self-start sm:self-auto ${
               today?.status === 'completed'
                 ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/40 shadow-[0_0_15px_rgba(48,209,88,0.25)]'
                 : 'bg-amber-500/20 text-amber-200 border border-amber-400/40 shadow-[0_0_15px_rgba(255,159,10,0.25)]'

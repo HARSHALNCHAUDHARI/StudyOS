@@ -56,7 +56,7 @@ export default function LoginPage() {
 
       {/* Main Apple Frosted Glass Card */}
       <div className="w-full max-w-md relative z-10 animate-fadeIn">
-        <div className="apple-glass-elevated p-8 md:p-10 rounded-[36px] border border-white/24 shadow-[0_30px_70px_rgba(0,0,0,0.85)]">
+        <div className="apple-glass-elevated p-6 sm:p-8 md:p-10 rounded-[28px] sm:rounded-[36px] border border-white/24 shadow-[0_30px_70px_rgba(0,0,0,0.85)]">
           {/* Header Branding */}
           <div className="text-center space-y-2 mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 p-[1.5px] shadow-[0_8px_25px_rgba(10,132,255,0.4)] mb-3 group hover:scale-105 transition-transform">
