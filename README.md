@@ -232,3 +232,4 @@ npm start
 - [x] Resettable demo state and full JSON data export.
 - [x] Vitest automated test suite passing cleanly.
 - [x] Next.js production build verified with zero errors.
+# StudyOS
