@@ -142,67 +142,67 @@ export default function DashboardPage() {
       </div>
 
       {/* KPI Cards Row with Apple Glass Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Streak */}
-        <div className="apple-card p-5 rounded-[24px] border border-white/16 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between text-slate-200 mb-2">
+        <div className="apple-card p-6 rounded-[28px] border border-white/16 shadow-[0_12px_36px_rgba(0,0,0,0.38)] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-200 mb-3">
             <span className="text-xs font-semibold text-slate-300">Study Streak</span>
             <div className="apple-glass-pill p-2 rounded-2xl bg-amber-500/15 border border-amber-400/35">
               <Flame className="w-4 h-4 text-[#ff9f0a] fill-[#ff9f0a]" />
             </div>
           </div>
-          <div className="text-2xl md:text-3xl font-black text-white font-mono flex items-baseline gap-1 mt-1">
-            {profile.currentStreak} <span className="text-xs font-normal text-slate-300">days</span>
+          <div className="text-3xl font-black text-white font-mono flex items-baseline gap-1.5 my-1">
+            {profile.currentStreak} <span className="text-xs font-normal text-slate-300 font-sans">days</span>
           </div>
-          <div className="text-[11px] text-amber-300 mt-1 font-semibold">
+          <div className="text-[11px] text-amber-300 mt-2 font-semibold">
             {profile.currentStreak === 0 ? '🔥 Start Day 1 to ignite streak' : `🔥 Best: ${profile.longestStreak} days`}
           </div>
         </div>
 
         {/* Daily Time */}
-        <div className="apple-card p-5 rounded-[24px] border border-white/16 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between text-slate-200 mb-2">
+        <div className="apple-card p-6 rounded-[28px] border border-white/16 shadow-[0_12px_36px_rgba(0,0,0,0.38)] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-200 mb-3">
             <span className="text-xs font-semibold text-slate-300">Today&apos;s Time</span>
             <div className="apple-glass-pill p-2 rounded-2xl bg-blue-500/15 border border-blue-400/35">
               <Clock className="w-4 h-4 text-[#0a84ff]" />
             </div>
           </div>
-          <div className="text-2xl md:text-3xl font-black text-white font-mono flex items-baseline gap-1 mt-1">
-            {todayMinutes} <span className="text-xs font-normal text-slate-300">/ 120m</span>
+          <div className="text-3xl font-black text-white font-mono flex items-baseline gap-1.5 my-1">
+            {todayMinutes} <span className="text-xs font-normal text-slate-300 font-sans">/ 120m</span>
           </div>
-          <div className="text-[11px] text-blue-300 mt-1 font-semibold">
+          <div className="text-[11px] text-blue-300 mt-2 font-semibold">
             {remainingMinutes === 0 ? '✓ Daily time goal reached!' : `${remainingMinutes}m remaining today`}
           </div>
         </div>
 
         {/* Syllabus Coverage */}
-        <div className="apple-card p-5 rounded-[24px] border border-white/16 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between text-slate-200 mb-2">
+        <div className="apple-card p-6 rounded-[28px] border border-white/16 shadow-[0_12px_36px_rgba(0,0,0,0.38)] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-200 mb-3">
             <span className="text-xs font-semibold text-slate-300">Syllabus Covered</span>
             <div className="apple-glass-pill p-2 rounded-2xl bg-emerald-500/15 border border-emerald-400/35">
               <Target className="w-4 h-4 text-[#30d158]" />
             </div>
           </div>
-          <div className="text-2xl md:text-3xl font-black text-white font-mono flex items-baseline gap-1 mt-1">
+          <div className="text-3xl font-black text-white font-mono flex items-baseline gap-1.5 my-1">
             {syllabusPercent}%
           </div>
-          <div className="text-[11px] text-emerald-300 mt-1 font-semibold">
+          <div className="text-[11px] text-emerald-300 mt-2 font-semibold">
             {completedTopics} of {totalTopics} completed
           </div>
         </div>
 
         {/* Exam Readiness */}
-        <div className="apple-card p-5 rounded-[24px] border border-white/16 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between text-slate-200 mb-2">
+        <div className="apple-card p-6 rounded-[28px] border border-white/16 shadow-[0_12px_36px_rgba(0,0,0,0.38)] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-200 mb-3">
             <span className="text-xs font-semibold text-slate-300">Exam Readiness</span>
             <div className="apple-glass-pill p-2 rounded-2xl bg-purple-500/15 border border-purple-400/35">
               <GraduationCap className="w-4 h-4 text-[#bf5af2]" />
             </div>
           </div>
-          <div className="text-2xl md:text-3xl font-black text-white font-mono flex items-baseline gap-1 mt-1">
+          <div className="text-3xl font-black text-white font-mono flex items-baseline gap-1.5 my-1">
             {syllabusPercent > 0 ? Math.round(syllabusPercent * 0.9 + 5) : 0}%
           </div>
-          <div className="text-[11px] text-purple-300 mt-1 font-semibold">
+          <div className="text-[11px] text-purple-300 mt-2 font-semibold">
             {syllabusPercent > 0 ? 'On Track • 150d target' : 'Sprint starting: 150 days'}
           </div>
         </div>
@@ -356,7 +356,7 @@ export default function DashboardPage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {curriculum.map((subData) => {
             const sub = subData.subject;
             const subTotal = subData.modules.reduce((acc, m) => acc + m.topics.length, 0);
@@ -369,7 +369,7 @@ export default function DashboardPage() {
             return (
               <div
                 key={sub.id}
-                className="apple-card p-5 rounded-[26px] flex flex-col justify-between border border-white/16 shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                className="apple-card p-6 rounded-[28px] flex flex-col justify-between border border-white/16 shadow-[0_12px_36px_rgba(0,0,0,0.38)]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">

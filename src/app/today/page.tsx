@@ -24,6 +24,7 @@ import { StudyDay, DailyTask } from '@/types';
 import { verifyStudyDayGate } from '@/lib/assessment/scoring';
 import { COURSE_DOCUMENTS, CourseDocument } from '@/lib/constants/course-content';
 import { CourseDocumentReader } from '@/components/reader/CourseDocumentReader';
+import { CoachMessageRenderer } from '@/components/coach/CoachMessageRenderer';
 
 export default function TodayStudyPage() {
   const [studyDay, setStudyDay] = useState<StudyDay | null>(null);
@@ -287,9 +288,9 @@ export default function TodayStudyPage() {
               </ul>
             </div>
 
-            {/* Notes content */}
-            <div className="prose prose-invert max-w-none text-xs text-slate-100 space-y-4 whitespace-pre-line leading-relaxed p-6 rounded-2xl bg-black/50 border border-white/14 font-mono shadow-inner">
-              {theoryTask.content.notes}
+            {/* Formatted Notes Content */}
+            <div className="apple-subcard p-6 md:p-8 rounded-[24px] border border-white/14 shadow-inner">
+              <CoachMessageRenderer content={theoryTask.content.notes || ''} />
             </div>
 
             {/* Definitions */}

@@ -157,7 +157,7 @@ export default function SubjectsPage() {
       </div>
 
       {/* Subject Selector Tabs */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {curriculum.map((subData) => {
           const sub = subData.subject;
           const isSelected = sub.id === selectedSubjectId;
@@ -173,7 +173,7 @@ export default function SubjectsPage() {
             <button
               key={sub.id}
               onClick={() => setSelectedSubjectId(sub.id)}
-              className={`p-5 rounded-[26px] border text-left transition flex flex-col justify-between cursor-pointer ${
+              className={`p-6 rounded-[28px] border text-left transition flex flex-col justify-between cursor-pointer shadow-[0_12px_36px_rgba(0,0,0,0.38)] ${
                 isSelected
                   ? 'bg-gradient-to-br from-blue-600/25 via-indigo-600/20 to-purple-600/15 border-blue-400/50 shadow-[0_8px_30px_rgba(10,132,255,0.25),inset_0_1px_0_rgba(255,255,255,0.3)]'
                   : 'apple-card'

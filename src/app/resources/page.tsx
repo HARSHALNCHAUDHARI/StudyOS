@@ -211,12 +211,12 @@ export default function ResourcesPage() {
       </div>
 
       {/* Grid of Documents */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map((doc) => {
           return (
             <div
               key={doc.id}
-              className="apple-card p-5 rounded-[28px] border border-white/14 flex flex-col justify-between hover:border-white/30 transition-all duration-200 group relative shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+              className="apple-card p-6 rounded-[28px] border border-white/16 flex flex-col justify-between hover:border-white/30 transition-all duration-200 group relative shadow-[0_12px_36px_rgba(0,0,0,0.38)]"
             >
               <div>
                 {/* Header Pills */}
