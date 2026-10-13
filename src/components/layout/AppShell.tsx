@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Sidebar } from './Sidebar';
 import { Navbar } from './Navbar';
-import { BottomNav } from './BottomNav';
 import { useAuth } from '../auth/AuthProvider';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -73,13 +72,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           onToggleMobileMenu={() => setMobileMenuOpen((prev) => !prev)}
           isMobileMenuOpen={mobileMenuOpen}
         />
-        <main className="flex-1 p-3 sm:p-5 md:p-8 max-w-7xl w-full mx-auto overflow-y-auto min-w-0 pb-24 lg:pb-8">
+        <main className="flex-1 p-3.5 sm:p-6 md:p-8 max-w-7xl w-full mx-auto overflow-y-auto min-w-0 pb-12">
           {children}
         </main>
       </div>
-
-      {/* Apple Floating Bottom Dock for Mobile & Tablet */}
-      <BottomNav onOpenMenu={() => setMobileMenuOpen(true)} />
     </div>
   );
 }

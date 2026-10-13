@@ -76,7 +76,7 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
 
   return (
     <header className="h-16 border-b border-white/14 bg-black/40 backdrop-blur-3xl px-3 sm:px-6 flex items-center justify-between sticky top-0 z-40 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-      {/* Left: Hamburger menu on mobile + Active Status & AI pill */}
+      {/* Left: Hamburger menu on mobile + Brand or Active Status */}
       <div className="flex items-center gap-2 sm:gap-3 min-w-0">
         {/* Mobile Hamburger Button */}
         <button
@@ -87,19 +87,30 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
           {isMobileMenuOpen ? <X className="w-4 h-4 text-blue-400" /> : <Menu className="w-4 h-4" />}
         </button>
 
-        {/* Apple Style Active Owner Badge */}
-        <div className="apple-glass-pill flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs shrink-0">
+        {/* Mobile Brand Title (visible only on mobile when sidebar is hidden) */}
+        <Link href="/" className="lg:hidden flex items-center gap-2 shrink-0">
+          <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 p-[1px] shadow-sm shrink-0">
+            <div className="w-full h-full bg-[#07090e]/90 rounded-[10px] flex items-center justify-center font-bold text-[11px] text-white">
+              OS
+            </div>
+          </div>
+          <span className="font-bold text-sm tracking-tight text-white flex items-center gap-1">
+            StudyOS <span className="text-[10px] bg-white/[0.12] text-blue-300 px-1.5 py-0.5 rounded-full font-mono border border-white/20">AI</span>
+          </span>
+        </Link>
+
+        {/* Apple Style Active Owner Badge (Desktop & Tablet md+) */}
+        <div className="apple-glass-pill hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs shrink-0">
           <span className="w-2 h-2 rounded-full bg-[#30d158] shadow-[0_0_8px_#30d158] animate-pulse" />
           <span className="text-emerald-200 font-semibold tracking-wide flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="hidden sm:inline">Harshal (Owner)</span>
-            <span className="sm:hidden font-bold">Harshal</span>
+            <span>Harshal (Owner)</span>
           </span>
         </div>
 
-        {/* AI Provider Status Pill */}
+        {/* AI Provider Status Pill (Desktop md+) */}
         <div
-          className={`apple-glass-pill hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition shrink-0 ${
+          className={`apple-glass-pill hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition shrink-0 ${
             aiStatus.isConfigured
               ? 'bg-purple-500/15 border-purple-400/30 text-purple-200'
               : 'bg-blue-500/15 border-blue-400/30 text-blue-200'
@@ -107,24 +118,24 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
           title={aiStatus.isConfigured ? 'OpenAI model active' : 'Resilient offline engine with C-DAC curriculum generators'}
         >
           <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-          <span className="hidden md:inline">AI: {aiStatus.isConfigured ? aiStatus.model : 'Apple Neural Engine'}</span>
-          <span className="md:hidden">AI</span>
+          <span className="hidden lg:inline">AI: {aiStatus.isConfigured ? aiStatus.model : 'Apple Neural Engine'}</span>
+          <span className="lg:hidden">AI</span>
         </div>
       </div>
 
       {/* Right controls */}
-      <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-        {/* Daily Time Budget Badge */}
-        <div className="apple-glass-pill flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs text-slate-100">
+      <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        {/* Daily Time Budget Badge (Desktop md+) */}
+        <div className="apple-glass-pill hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs text-slate-100 shrink-0">
           <Clock className="w-3.5 h-3.5 text-blue-400" />
-          <span className="hidden sm:inline text-slate-300">Budget:</span>
+          <span className="hidden lg:inline text-slate-300">Budget:</span>
           <span className="font-bold text-white font-mono">{profile.dailyTimeBudget}m</span>
         </div>
 
-        {/* Study Streak Badge with Apple Orange */}
-        <div className="apple-glass-pill flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/15 border border-amber-400/35 text-xs text-amber-200 font-semibold">
+        {/* Study Streak Badge with Apple Orange (Desktop md+) */}
+        <div className="apple-glass-pill hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/35 text-xs text-amber-200 font-semibold shrink-0">
           <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
-          <span className="hidden sm:inline text-amber-300">Streak:</span>
+          <span className="hidden lg:inline text-amber-300">Streak:</span>
           <span className="font-bold text-white font-mono">{profile.currentStreak}d</span>
         </div>
 
@@ -144,7 +155,7 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
           </button>
 
           {showNotifMenu && (
-            <div className="absolute right-0 mt-2 w-80 rounded-3xl apple-glass-elevated p-4 z-50 animate-fadeIn">
+            <div className="absolute right-0 mt-2 w-72 sm:w-80 rounded-3xl apple-glass-elevated p-4 z-50 animate-fadeIn">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
                 <span className="text-xs font-bold text-white">Notifications</span>
                 <span className="text-[11px] text-slate-300 font-medium">{unreadCount} unread</span>
@@ -193,7 +204,7 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
           {settings.darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-400" />}
         </button>
 
-        {/* Reset Demo Button (Hidden on xs mobile screens to save space) */}
+        {/* Reset Demo Button (Desktop sm+) */}
         <button
           onClick={handleResetDemo}
           className="apple-glass-pill hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-slate-300 hover:text-rose-300 text-xs transition cursor-pointer"
@@ -203,28 +214,26 @@ export function Navbar({ onToggleMobileMenu, isMobileMenuOpen }: NavbarProps) {
           <span>Reset</span>
         </button>
 
-        {/* Owner Profile & Lock Button */}
-        <div className="flex items-center gap-3 pl-3 border-l border-white/14">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center text-xs font-bold text-white shadow-md ring-1 ring-white/20">
-              H
-            </div>
-            <div className="hidden lg:block text-left">
-              <p className="text-xs font-bold text-white leading-tight">Harshal</p>
-              <p className="text-[10px] text-blue-300 leading-tight font-mono font-medium">Owner</p>
-            </div>
+        {/* Desktop Profile Avatar */}
+        <div className="hidden md:flex items-center gap-2 pl-2 border-l border-white/14">
+          <div className="w-7 h-7 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center text-xs font-bold text-white shadow-md ring-1 ring-white/20">
+            H
           </div>
-
-          {/* Apple Style Lock Button */}
-          <button
-            onClick={logout}
-            className="apple-glass-pill flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-rose-500/15 hover:bg-rose-500/25 border border-rose-400/35 text-rose-200 text-xs font-semibold transition cursor-pointer"
-            title="Lock workspace and sign out"
-          >
-            <Lock className="w-3.5 h-3.5 text-rose-400" />
-            <span className="hidden md:inline">Lock</span>
-          </button>
+          <div className="hidden lg:block text-left">
+            <p className="text-xs font-bold text-white leading-tight">Harshal</p>
+            <p className="text-[10px] text-blue-300 leading-tight font-mono font-medium">Owner</p>
+          </div>
         </div>
+
+        {/* Apple Style Lock Button (Always easily accessible) */}
+        <button
+          onClick={logout}
+          className="apple-glass-pill flex items-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-2xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-400/35 text-rose-200 text-xs font-semibold transition cursor-pointer shrink-0"
+          title="Lock workspace and sign out"
+        >
+          <Lock className="w-3.5 h-3.5 text-rose-400" />
+          <span className="hidden md:inline">Lock</span>
+        </button>
       </div>
     </header>
   );
